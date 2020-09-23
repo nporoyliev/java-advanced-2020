@@ -1,25 +1,27 @@
 public class BankAccount {
-    private final static double DEFAULT_INTEREST_RATE = 0.02;
-    private static double interestRate = DEFAULT_INTEREST_RATE;
     private static int idCounter = 1;
-    private  int id;
+    private int id;
     private double balance;
+    private double interestRate;
 
-    public BankAccount(){
+
+    public BankAccount () {
         this.id = idCounter++;
+        this.interestRate = 0.02;
+        System.out.println ("Account ID" + this.id + " created");
     }
 
     public void setInterestRate (double interestRate) {
         this.interestRate = interestRate;
     }
 
-    public double getInterest (int years){
-        return BankAccount.interestRate * years * this.balance;
+    public double getInterestRate (int years) {
+        return this.interestRate * years * this.balance;
     }
 
-    public void deposit (double amount){
+    public void deposit (double amount) {
         this.balance += amount;
-        System.out.println ("Deposited "+ amount + "to ID " + this.id);
+        System.out.printf ("Deposited %.0f to ID%d%n", amount, this.id);
     }
 
     public Integer getId () {
